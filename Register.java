@@ -15,7 +15,7 @@ import java.awt.event.*;
 
 import oop_proj1.*;
 
-public class Register extends Frame implements ItemListener, TextListener, ActionListener {
+public class Register extends FrameBase {
 
     //field main
     Frame f = new Frame();
@@ -38,6 +38,7 @@ public class Register extends Frame implements ItemListener, TextListener, Actio
     TextField tf3 = new TextField(10);
     Button b = new Button("Register");
 
+    
     //constructor
     public Register(){
         
@@ -123,16 +124,16 @@ public class Register extends Frame implements ItemListener, TextListener, Actio
 
         switch(choice) {
             case "Register":
-                Register reg = new Register();
+                Register reg = new Register(this.db);
                 break;
             case "Search by Id":
-                Search search = new Search();
+                Search search = new Search(this.db);
                 break;
             case "Total Number":
-                TotalNumber tn = new TotalNumber();
+                TotalNumber tn = new TotalNumber(this.db);
                 break;
             case "List":
-                List list = new List();
+                List list = new List(this.db);
                 break;
             case "Quit":
                 System.exit(0);
@@ -148,7 +149,11 @@ public class Register extends Frame implements ItemListener, TextListener, Actio
         String id = tf1.getText();
         String name = tf2.getText();
         String dob = tf3.getText();
-
+        // init new employee
+        Employee employee = new Employee(id, name, dob);
+        // register
+        this.db.register(employee);
+        
         ta.setText(id + " " + name + " " + dob + 
             ".......................... registered successfully!");     //import getInfo
         ta.setVisible(false);
