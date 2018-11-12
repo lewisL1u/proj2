@@ -12,6 +12,7 @@ package oop_proj2;
 
 import java.awt.*;
 import java.awt.event.*;
+import proj1;
 
 public class SelectMenu extends Frame implements ItemListener{
 	
@@ -22,9 +23,12 @@ public class SelectMenu extends Frame implements ItemListener{
     Checkbox cb4 = new Checkbox("List");
     Checkbox cb5 = new Checkbox("Quit");
 	
+	private Database _db;
+	
     //constructor
     public SelectMenu(){
 		
+	    _db = new Database();
         //container
         Frame f = new Frame();
         f.setTitle("Select Menu");
@@ -76,16 +80,16 @@ public class SelectMenu extends Frame implements ItemListener{
         switch(choice) {
             
             case "Register":
-                    Register reg = new Register();
+                    Register reg = new Register(_db);
                     break;
             case "Search by Id":
-                    Search search = new Search();
+                    Search search = new Search(_db);
                     break;
             case "Total Number":
-                    TotalNumber tn = new TotalNumber();
+                    TotalNumber tn = new TotalNumber(_db);
                     break;
             case "List":
-                    List list = new List();
+                    List list = new List(_db);
                     break;
             case "Quit":
                     System.exit(0);
