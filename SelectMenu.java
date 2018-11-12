@@ -12,7 +12,7 @@ package oop_proj2;
 
 import java.awt.*;
 import java.awt.event.*;
-import proj1;
+import oop_proj1.*;
 
 public class SelectMenu extends Frame implements ItemListener{
 	
